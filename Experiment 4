@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee
+{
+private:
+    int employeeId;
+    string employeeName;
+    float basicSalary;
+    float bonusAmount;
+
+public:
+    Employee()
+    {
+        employeeId = 0;
+        employeeName = "Not assigned";
+        basicSalary = 0;
+        bonusAmount = 0;
+    }
+
+    Employee(int id, string name, float salary, float bonus)
+    {
+        employeeId = id;
+        employeeName = name;
+        basicSalary = salary;
+        bonusAmount = bonus;
+    }
+
+    float grossSalary()
+    {
+        return basicSalary + bonusAmount;
+    }
+
+    void showDetails()
+    {
+        cout << "\nEmployee ID: " << employeeId << endl;
+        cout << "Employee name: " << employeeName << endl;
+        cout << "Basic salary: " << basicSalary << endl;
+        cout << "Bonus amount: " << bonusAmount << endl;
+        cout << "Gross salary: " << grossSalary() << endl;
+    }
+};
+
+int main()
+{
+    Employee firstEmployee;
+    Employee secondEmployee(205, "Meera", 48000, 3500);
+
+    cout << "Default constructor employee:" << endl;
+    firstEmployee.showDetails();
+
+    cout << "\nParameterized constructor employee:" << endl;
+    secondEmployee.showDetails();
+    return 0;
+}

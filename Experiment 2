@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle
+{
+private:
+    float length;
+    float width;
+
+public:
+    void inputDimensions();
+    float calculateArea();
+    float calculatePerimeter();
+    void printDetails();
+};
+
+void Rectangle::inputDimensions()
+{
+    cout << "Enter rectangle length: ";
+    cin >> length;
+    cout << "Enter rectangle width: ";
+    cin >> width;
+}
+
+float Rectangle::calculateArea()
+{
+    return length * width;
+}
+
+float Rectangle::calculatePerimeter()
+{
+    return 2 * (length + width);
+}
+
+void Rectangle::printDetails()
+{
+    float area = calculateArea();
+    float perimeter = calculatePerimeter();
+
+    cout << "\nArea of the rectangle: " << area << endl;
+    cout << "Perimeter of the rectangle: " << perimeter << endl;
+}
+
+int main()
+{
+    Rectangle shape;
+    shape.inputDimensions();
+    shape.printDetails();
+    return 0;
+}

@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book
+{
+private:
+    int bookNumber;
+    string title;
+    float cost;
+
+public:
+    Book(int number, string bookTitle, float bookCost)
+    {
+        bookNumber = number;
+        title = bookTitle;
+        cost = bookCost;
+        cout << "Book created using parameterized constructor" << endl;
+    }
+
+    Book(const Book &source)
+    {
+        bookNumber = source.bookNumber;
+        title = source.title;
+        cost = source.cost;
+        cout << "Book copied using copy constructor" << endl;
+    }
+
+    void showDetails()
+    {
+        cout << "Book number: " << bookNumber << endl;
+        cout << "Title: " << title << endl;
+        cout << "Cost: " << cost << endl;
+    }
+
+    ~Book()
+    {
+        cout << "Removing book object: " << title << endl;
+    }
+};
+
+int main()
+{
+    Book firstBook(220, "Modern Poetry", 850);
+    cout << "\nFirst book:" << endl;
+    firstBook.showDetails();
+
+    Book secondBook(firstBook);
+    cout << "\nCopied book:" << endl;
+    secondBook.showDetails();
+    return 0;
+}

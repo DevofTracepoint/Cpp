@@ -1,0 +1,78 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Product
+{
+private:
+    int productNumber;
+    string productName;
+    float unitPrice;
+    int monthlySales[12];
+
+public:
+    void readProduct()
+    {
+        cout << "Enter product number: ";
+        cin >> productNumber;
+        cin.ignore();
+
+        cout << "Enter product name: ";
+        getline(cin, productName);
+        cout << "Enter unit price: ";
+        cin >> unitPrice;
+
+        for (int month = 0; month < 12; month++)
+        {
+            cout << "Units sold in month " << month + 1 << ": ";
+            cin >> monthlySales[month];
+        }
+    }
+
+    int annualUnits()
+    {
+        int units = 0;
+
+        for (int month = 0; month < 12; month++)
+        {
+            units += monthlySales[month];
+        }
+
+        return units;
+    }
+
+    void printAnnualSummary()
+    {
+        int units = annualUnits();
+        float annualSales = units * unitPrice;
+
+        cout << "\nProduct number: " << productNumber << endl;
+        cout << "Product name: " << productName << endl;
+        cout << "Unit price: " << unitPrice << endl;
+        cout << "Units sold this year: " << units << endl;
+        cout << "Yearly sales amount: " << annualSales << endl;
+    }
+};
+
+int main()
+{
+    int productCount;
+    Product inventory[10];
+
+    cout << "Enter number of products: ";
+    cin >> productCount;
+
+    for (int index = 0; index < productCount; index++)
+    {
+        cout << "\nEnter details for product " << index + 1 << endl;
+        inventory[index].readProduct();
+    }
+
+    for (int index = 0; index < productCount; index++)
+    {
+        cout << "\n--- Product " << index + 1 << " summary ---" << endl;
+        inventory[index].printAnnualSummary();
+    }
+
+    return 0;
+}

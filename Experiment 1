@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student
+{
+private:
+    int rollNumber;
+    string fullName;
+    float subjectMarks[5];
+
+public:
+    void readDetails()
+    {
+        cout << "Enter roll number: ";
+        cin >> rollNumber;
+        cin.ignore();
+
+        cout << "Enter student name: ";
+        getline(cin, fullName);
+
+        for (int subject = 0; subject < 5; subject++)
+        {
+            cout << "Enter marks for subject " << subject + 1 << ": ";
+            cin >> subjectMarks[subject];
+        }
+    }
+
+    float findTotal()
+    {
+        float marksTotal = 0;
+
+        for (int subject = 0; subject < 5; subject++)
+        {
+            marksTotal += subjectMarks[subject];
+        }
+
+        return marksTotal;
+    }
+
+    void showReport()
+    {
+        float totalMarks = findTotal();
+        float averageMarks = totalMarks / 5;
+
+        cout << "\n--- Student Result ---" << endl;
+        cout << "Roll number: " << rollNumber << endl;
+        cout << "Name: " << fullName << endl;
+        cout << "Total marks: " << totalMarks << endl;
+        cout << "Percentage: " << averageMarks << "%" << endl;
+
+        if (averageMarks >= 40)
+            cout << "Result: Passed" << endl;
+        else
+            cout << "Result: Failed" << endl;
+    }
+};
+
+int main()
+{
+    Student student;
+    student.readDetails();
+    student.showReport();
+    return 0;
+}

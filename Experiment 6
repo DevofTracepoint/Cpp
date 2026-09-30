@@ -1,0 +1,34 @@
+// Displaying an employee's salary with a friend class and constructor
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+private:
+    double monthlySalary;
+
+public:
+    Employee(double salary)
+    {
+        monthlySalary = salary;
+    }
+
+    friend class SalaryDisplay;
+};
+
+class SalaryDisplay
+{
+public:
+    void showSalary(Employee &worker)
+    {
+        cout << "Employee monthly salary: Rs " << worker.monthlySalary << endl;
+    }
+};
+
+int main()
+{
+    Employee worker(68000.00);
+    SalaryDisplay viewer;
+    viewer.showSalary(worker);
+    return 0;
+}
